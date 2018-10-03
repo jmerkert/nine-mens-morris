@@ -49,16 +49,6 @@ public final class Man {
     }
 
     /**
-     * Moves the man to the given position if possible and returns result.
-     * 
-     * @param target must not be {@code null}
-     * @return true if successful, false else
-     */
-    public boolean moveTo(Position target) {
-        return false;
-    }
-
-    /**
      * Removes the man from the board.
      */
     public void remove() {
