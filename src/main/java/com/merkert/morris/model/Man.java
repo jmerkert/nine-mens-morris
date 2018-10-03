@@ -9,7 +9,7 @@ import java.util.Objects;
 public final class Man {
 
     private final Color color;
-    private final Position position;
+    private Position position;
 
     /**
      * Dedicated constructor.
@@ -37,6 +37,15 @@ public final class Man {
      */
     public Position getPosition() {
         return position;
+    }
+
+    /**
+     * Sets man to a new position.
+     * 
+     * @param must not be {@code null]}
+     */
+    public void setPosition(Position position) {
+        this.position = Objects.requireNonNull(position);
     }
 
     /**
