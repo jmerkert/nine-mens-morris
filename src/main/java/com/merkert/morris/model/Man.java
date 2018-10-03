@@ -1,17 +1,32 @@
 package com.merkert.morris.model;
 
+import java.util.Objects;
+
 /**
  * This interface represents a token.
  *
  */
-public interface Man {
+public final class Man {
+
+    private final Position position;
+
+    /**
+     * Dedicated constructor.
+     * 
+     * @param must not be {@code null]}
+     */
+    public Man(Position position) {
+        this.position = Objects.requireNonNull(position, "position");
+    }
 
     /**
      * Returns the the actual position of the man.
      * 
      * @return never {@code null}
      */
-    Position getPosition();
+    public Position getPosition() {
+        return position;
+    }
 
     /**
      * Moves the man to the given position if possible and returns result.
@@ -19,11 +34,14 @@ public interface Man {
      * @param target must not be {@code null}
      * @return true if successful, false else
      */
-    boolean moveTo(Position target);
+    public boolean moveTo(Position target) {
+        return false;
+    }
 
     /**
      * Removes the man from the board.
      */
-    void remove();
+    public void remove() {
+    }
 
 }
