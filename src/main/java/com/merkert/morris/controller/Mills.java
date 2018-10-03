@@ -1,6 +1,10 @@
-package com.merkert.morris.model;
+package com.merkert.morris.controller;
 
 import java.util.Objects;
+
+import com.merkert.morris.model.Board;
+import com.merkert.morris.model.Man;
+import com.merkert.morris.model.Position;
 
 /**
  * This class knows all mills and can check if a moved man caused a mill.
@@ -26,8 +30,13 @@ public class Mills {
      * @return {@code true} if a mill has been built, {@code false] otherwise
      */
     public boolean hasMill(Man man) {
+        boolean hasMill = false;
         Objects.requireNonNull(man, "man");
-        return checkHorizontal(man);
+        hasMill = checkHorizontal(man);
+        if (hasMill) {
+            return true;
+        }
+        return checkVertical(man);
     }
 
     private boolean checkHorizontal(Man one) {
@@ -83,8 +92,14 @@ public class Mills {
         return one.getColor() == two.getColor() && one.getColor() == three.getColor();
     }
 
-    private boolean checkVertical(Position position) {
-        return false;
+    private boolean checkVertical(Man man) {
+        Man one = board.getMan(0, man.getPosition().getPosition());
+        Man two = board.getMan(1, man.getPosition().getPosition());
+        Man three = board.getMan(2, man.getPosition().getPosition());
+        if (one == null || two == null || three == null) {
+            return false;
+        }
+        return sameColor(one, two, three);
     }
 
     private boolean isOddNumber(int num) {
