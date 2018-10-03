@@ -8,6 +8,7 @@ import java.util.Objects;
  */
 public final class Man {
 
+    private final Color color;
     private final Position position;
 
     /**
@@ -15,8 +16,18 @@ public final class Man {
      * 
      * @param must not be {@code null]}
      */
-    public Man(Position position) {
+    public Man(Color color, Position position) {
+        this.color = Objects.requireNonNull(color, "color");
         this.position = Objects.requireNonNull(position, "position");
+    }
+
+    /**
+     * Returns the the actual position of the man.
+     * 
+     * @return never {@code null}
+     */
+    public Color getColor() {
+        return color;
     }
 
     /**
